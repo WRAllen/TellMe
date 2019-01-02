@@ -1,0 +1,15 @@
+.page-form{
+    height: 70px;
+    line-height: 70px;
+}
+.page-select{
+    height: 32px;
+    margin: 0 5px;
+}
+.margin-lf{
+    margin-left: 10px;
+}
+#sale_num, #wava_num{
+    width: 60px;
+    height: 23px;
+}

@@ -1,20 +1,17 @@
+# -*- coding:utf-8 -*-
 from . import main
-from flask import render_template, request,flash
+from app.main.controller import *
+from flask import render_template
 
 
 
 @main.route('/')
 def index():
-	return "success"
+    return render_template('main/index.html')
 
 
-
-
-
-
-
-
-
-
-
-
+@main.route('/show_label')
+def show_label():
+    label = return_label()
+    print("==========",label)
+    return "success"

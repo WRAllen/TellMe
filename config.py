@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 class Config(object):
     SECRET_KEY = "Ay98Cct2oNSlnHDdTl8"
-    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     @staticmethod
     def init_app(app):
         pass

@@ -1,0 +1,33 @@
+.edit_form{
+    padding: 5px;
+    width: 70px;
+    margin-top: 0 !important;
+}
+#edit_form .fl_label{
+    float: left;
+}
+#edit_form label{
+    font-size: 18px;
+}
+.icon-position{
+    margin-top: -5px;
+}
+.activate-position{
+    margin-top: -15px;
+}
+.check-radios{
+    width: 16%;
+    float: left;
+}
+.checkbox.check-radios{
+    margin-top: 0px!important;
+}
+.checkbox label:before{
+    top: 5px;
+}
+.checkbox label::after{
+    top: 5px;
+}
+.icon-on{
+    color: #5cb85c;
+}
