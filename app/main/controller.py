@@ -2,6 +2,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+from config import BASE_PATH
 import os
 
 #创建权重的随机噪点
@@ -23,10 +24,9 @@ def max_pool_2x2(x):
   return tf.nn.max_pool(x, ksize=[1, 2, 2, 1],
                         strides=[1, 2, 2, 1], padding='SAME') 
 
-def return_label():
-    BASE_PATH = os.getcwd()
-    
-    sess = tf.InteractiveSession()
+def return_label(filename):
+    ###重新设置图
+    tf.reset_default_graph()
     #定义神经网络-start
     # 定义输入和编写输入形状将1D转回原来的2D                     
     x = tf.placeholder(tf.float32, [None, 784])
@@ -54,18 +54,35 @@ def return_label():
     W_fc2 = weight_variable([1024, 10], 'W_fc2')
     b_fc2 = bias_variable([10], 'b_fc2')
     y_conv=tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)
+
+    
     #定义神经网络-end
+    with tf.Session() as sess:
+        init_op = tf.global_variables_initializer()
+        sess.run(init_op)
 
-    #读取之前保存的训练模型
-    saver = tf.train.Saver()
-    saver.restore(sess, BASE_PATH+"/app/main/my_net/net.ckpt")
-    #导入照片
-    image_path = BASE_PATH+"/app/static/upload/1.png"
-    img = Image.open(image_path).convert('L')#灰度图(L)
-    img_shape = np.reshape(img, 784)
-    real_x = np.array([1-img_shape])# 0-255 uint8   8位无符号整数，取值：[0, 255] 如果采用1-大数变成小数
-    y = sess.run(y_conv, feed_dict={x: real_x,keep_prob: 1.0}) #y类似一个二维表，因为只有一张图片所以只有一行，y[0]包含10个值，
-    return np.argmax(y[0])
+        #读取之前保存的训练模型
+        saver = tf.train.Saver()
+        saver.restore(sess, BASE_PATH+"/app/main/my_net/net.ckpt")
+        #导入照片
+        image_path = BASE_PATH+"/app/static/upload/"+filename
+        img = Image.open(image_path).convert('L')#灰度图(L)
+        img_shape = np.reshape(img, 784)
+        real_x = np.array([1-img_shape])# 0-255 uint8   8位无符号整数，取值：[0, 255] 如果采用1-大数变成小数
+        y = sess.run(y_conv, feed_dict={x: real_x,keep_prob: 1.0}) #y类似一个二维表，因为只有一张图片所以只有一行，y[0]包含10个值，
+        return np.argmax(y[0])
 
+
+
+
+
+def upload_file(path, file):
+    '''
+    上传文件
+    '''
+    path = BASE_PATH + path
+    file.save(os.path.join(path, str(file.filename)))
+
+    return file.filename
 
 

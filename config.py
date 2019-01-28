@@ -1,4 +1,7 @@
 # -*- coding:utf-8 -*-
+import os
+
+BASE_PATH = os.getcwd()
 class Config(object):
     SECRET_KEY = "Ay98Cct2oNSlnHDdTl8"
     @staticmethod

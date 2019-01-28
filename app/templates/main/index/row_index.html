@@ -6,19 +6,22 @@
                     <h3>欢迎上传手写字体进行识别，暂时只支持个位</h3>
                 </div>            
                 <div class="panel-body">
-                    <button id="btn_sure">上传</button>
+                    <form id='upload_file' action="" method="POST">
+                        <input type="file" name="fileUpload"/>
+                        <button id="submit">上传</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>  
 </div>
 
-<div class="row" id="hide_div">
+<div class="row">
     <div class="col-sm-12 col-xs-12">
         <div class="panel panel-default card-view">
             <div class="panel-wrapper collapse in">
                 <div class="panel-heading">
-                    <h3>正在识别...</h3>
+                    <h3 id='result_head'></h3>
                 </div>            
                 <div class="panel-body" id="result_div">
                     <!-- 动态添加 -->

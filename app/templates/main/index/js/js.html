@@ -1,11 +1,25 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$('#hide_div').hide()
-		$('#result_div').html('')
-		$('#btn_sure').click(function(){
-			$('#hide_div').show()
-			$('#result_div').append("<p>结果是：1</p>")
-		})
-	})
+    $(function(){
+        $('#result_div').html('')
+        $('#upload_file #submit').on('click',function(e){
+            e.preventDefault()
+            $('#result_head').text("正在识别...")
+            var fileform = new FormData(document.getElementById("upload_file")); 
+            $.ajax({
+                url:'{{ url_for("main.show_label") }}',
+                type:"POST",
+                dataType:'json',
+                data:fileform,
+                cache: false,  
+                processData: false,  
+                contentType: false, 
+                success:function(response){
+                    $('#result_head').text("识别结束：")
+                    $('#result_div').html('')
+                    $('#result_div').append("<p>结果是："+response+"</p>")
+                }
+            })  
+        })
+    })
 </script>

@@ -1,2 +1,2 @@
-model_checkpoint_path: "net.ckpt"
-all_model_checkpoint_paths: "net.ckpt"
+model_checkpoint_path: "/home/wangyu/work/TF/Tell/TellMe/app/main/my_net/net.ckpt"
+all_model_checkpoint_paths: "/home/wangyu/work/TF/Tell/TellMe/app/main/my_net/net.ckpt"

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from . import main
 from app.main.controller import *
-from flask import render_template
+from flask import render_template, request
 
 
 
@@ -10,8 +10,12 @@ def index():
     return render_template('main/index.html')
 
 
-@main.route('/show_label')
+@main.route('/ajax/show_label', methods=["POST"])
 def show_label():
-    label = return_label()
-    print("==========",label)
-    return "您上传的数字是:"+str(label)
+    file = request.files['fileUpload']
+    filename = upload_file('/app/static/upload/',file)
+    label = return_label(filename)
+    
+    return str(label)
+
+
