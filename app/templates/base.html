@@ -1,6 +1,6 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}TellMe{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -24,14 +24,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('main.index') }}"></a></li>
             </ul>
-
-            <!-- 判断条件中的变量current_user由Flask-Login定义，且在视图函数和模板中自动调用。 -->
-            <ul class="nav navbar-nav navbar-right">    
-                {% if current_user %}
-                <li><a href="{{ url_for('main.userinfo') }}">{{ current_user.name }}</a></li>
-                <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
-                {% endif %}
-            </ul> 
         </div>
     </div>
 </div>
@@ -51,6 +43,7 @@
 {% endblock %}
 
 {% block scripts %}
+
 {{ super() }}
 
 {% endblock %}

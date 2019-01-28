@@ -1,0 +1,11 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#hide_div').hide()
+		$('#result_div').html('')
+		$('#btn_sure').click(function(){
+			$('#hide_div').show()
+			$('#result_div').append("<p>结果是：1</p>")
+		})
+	})
+</script>
