@@ -14,4 +14,4 @@ def index():
 def show_label():
     label = return_label()
     print("==========",label)
-    return "success"
+    return "您上传的数字是:"+str(label)

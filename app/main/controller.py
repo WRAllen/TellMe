@@ -60,7 +60,7 @@ def return_label():
     saver = tf.train.Saver()
     saver.restore(sess, BASE_PATH+"/app/main/my_net/net.ckpt")
     #导入照片
-    image_path = "/home/wangyu/work/TF/Tell/TellMe/app/static/media/upload/1.png"
+    image_path = "/home/wangyu/work/TF/Tell/TellMe/app/static/upload/1.png"
     img = Image.open(image_path).convert('L')#灰度图(L)
     img_shape = np.reshape(img, 784)
     real_x = np.array([1-img_shape])# 0-255 uint8   8位无符号整数，取值：[0, 255] 如果采用1-大数变成小数
